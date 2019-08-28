@@ -89,7 +89,6 @@ public class WeatherActivity extends AppCompatActivity {
         comfortText = (TextView) findViewById(R.id.comfort_text);
         carWashText = (TextView) findViewById(R.id.car_wash_text);
         sportText = (TextView) findViewById(R.id.sport_text);
-        sportText = (TextView) findViewById(R.id.sport_text);
         bingPicImg = (ImageView) findViewById(R.id.bing_pic_img);
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
@@ -103,7 +102,7 @@ public class WeatherActivity extends AppCompatActivity {
             mWeatherId = weather.basic.weatherId;
             showWeatherInfo(weather);
         }else {
-            //午缓存时区服务器查询
+            //无缓存时去服务器查询
             mWeatherId = getIntent().getStringExtra("weather_id");
             weatherLayout.setVisibility(View.INVISIBLE);
             requestWeather(mWeatherId);
@@ -187,9 +186,9 @@ public class WeatherActivity extends AppCompatActivity {
             View view = LayoutInflater.from(this).inflate(R.layout.froecast_item, forecastLayout, false);
             TextView dataText = (TextView) view.findViewById(R.id.data_text);
             TextView infoText = (TextView) view.findViewById(R.id.info_text);
-            TextView maxText = (TextView) view.findViewById(R.id.info_text);
-            TextView minText = (TextView) view.findViewById(R.id.max_text);
-            dataText.setText(forecast.data);
+            TextView maxText = (TextView) view.findViewById(R.id.max_text);
+            TextView minText = (TextView) view.findViewById(R.id.min_text);
+            dataText.setText(forecast.date);
             infoText.setText(forecast.more.info);
             maxText.setText(forecast.temperature.max);
             minText.setText(forecast.temperature.min);
